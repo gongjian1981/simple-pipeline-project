@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/gongjian1981/simple-pipeline-project/issues"
   },
-  "homepage": "https://github.com/gongjian1981/simple-pipeline-project#readme"
+  "homepage": "https://github.com/gongjian1981/simple-pipeline-project#readme",
+  "devDependencies": {
+    "jest": "^30.0.5"
+  }
 }
