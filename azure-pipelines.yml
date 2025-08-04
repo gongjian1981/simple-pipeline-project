@@ -18,6 +18,9 @@ steps:
 - script: |
     npm install
     npm run build
+    echo "Directory structure after tests:"
+    ls -R
+
   displayName: 'npm install and build'
 
 - task: PublishBuildArtifacts@1
