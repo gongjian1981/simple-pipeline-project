@@ -1,6 +1,7 @@
 module.exports = {
   testEnvironment: 'node',
   collectCoverage: true,
-  coverageDirectory: "coverage"
+  coverageDirectory: "coverage",
+  coverageReporters: ['html', 'text-summary']
 };
 
