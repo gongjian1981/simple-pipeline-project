@@ -8,7 +8,6 @@
     "coverage": "jest --coverage",
     "clean": "rimraf dist",
     "build": "npm run clean && mkdir dist && cp -r calculator dist/"
-
   },
   "repository": {
     "type": "git",
@@ -23,6 +22,7 @@
   },
   "homepage": "https://github.com/gongjian1981/simple-pipeline-project#readme",
   "devDependencies": {
-    "jest": "^30.0.5"
+    "jest": "^30.0.5",
+    "rimraf": "^6.0.1"
   }
 }
