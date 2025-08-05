@@ -24,8 +24,8 @@ steps:
   displayName: 'Run Jest with coverage'
 
 - script: |
-    npm build
-  displayName: 'Build'
+    npm run build
+  displayName: 'Build Project'
 
 - task: PublishBuildArtifacts@1
   inputs:
