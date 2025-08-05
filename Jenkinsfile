@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   tools {
-    nodejs 'Node 20'
+    nodejs 'Node 20' // Make sure you configured this in Jenkins global tools
   }
 
   stages {
@@ -12,13 +12,19 @@ pipeline {
       }
     }
 
+    stage('Build') {
+      steps {
+        sh 'npm run build'
+      }
+    }
+
     stage('Test & Coverage') {
       steps {
         sh 'npm run coverage'
       }
     }
 
-    stage('Publish HTML') {
+    stage('Publish HTML Report') {
       steps {
         publishHTML(target: [
           allowMissing: false,
@@ -26,15 +32,15 @@ pipeline {
           keepAll: true,
           reportDir: 'coverage',
           reportFiles: 'index.html',
-          reportName: 'Coverage Report'
+          reportName: 'Jest Coverage Report'
         ])
       }
     }
+  }
 
-    stage('Publish Cobertura') {
-      steps {
-        cobertura coberturaReportFile: 'coverage/cobertura-coverage.xml'
-      }
+  post {
+    always {
+      archiveArtifacts artifacts: 'coverage/**/*.*', onlyIfSuccessful: true
     }
   }
 }
