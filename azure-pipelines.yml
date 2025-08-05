@@ -27,6 +27,13 @@ steps:
     npm run build
   displayName: 'Build Project'
 
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: 'coverage/cobertura-coverage.xml'
+    reportDirectory: 'coverage'
+  displayName: 'Publish coverage results to Azure DevOps'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'coverage'
