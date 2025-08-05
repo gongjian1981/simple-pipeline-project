@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "jest",
-    "coverage": "jest --coverage",
-    "clean": "rimraf dist",
-    "build": "npm run clean && mkdir dist && cp -r calculator dist/"
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",

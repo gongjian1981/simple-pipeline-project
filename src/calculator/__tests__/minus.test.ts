@@ -1,4 +1,4 @@
-const minus = require('../calculator/minus');
+import { minus } from '../minus';
 
 test('3 - 2 = 1', () => {
   expect(minus(3, 2)).toBe(1);
