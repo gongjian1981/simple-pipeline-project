@@ -17,20 +17,25 @@ steps:
 
 - script: |
     npm install
-    npm install
-  displayName: 'Install, Build, Test & Coverage'
+  displayName: 'Install dependencies'
 
 - script: |
     npm run coverage
-  displayName: 'Test & Coverage'
+  displayName: 'Run Jest with coverage'
 
 - script: |
-    npm run build
-  displayName: 'Build'
+    echo "Current path: $(pwd)"
+    echo "List root:"
+    ls -la
+    echo "List coverage:"
+    ls -la coverage || echo "No coverage folder found"
+    echo "List lcov-report:"
+    ls -la coverage/lcov-report || echo "No lcov-report folder found"
+  displayName: 'Debug coverage folders'
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'coverage/lcov-report'
     ArtifactName: 'coverage-report'
     publishLocation: 'Container'
-  displayName: 'Publish'
+  displayName: 'Publish coverage report'
