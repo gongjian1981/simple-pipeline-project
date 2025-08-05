@@ -17,19 +17,20 @@ steps:
 
 - script: |
     npm install
-    npm run coverage
-    npm run build
-  displayName: 'npm install and build'
+    npm install
+  displayName: 'Install, Build, Test & Coverage'
 
 - script: |
-    echo "Checking coverage directory contents..."
-    ls -la
-    ls -la coverage
-    ls -la coverage/lcov-report
-  displayName: 'Debug coverage folder'
+    npm run coverage
+  displayName: 'Test & Coverage'
+
+- script: |
+    npm run build
+  displayName: 'Build'
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'coverage/lcov-report'
     ArtifactName: 'coverage-report'
     publishLocation: 'Container'
+  displayName: 'Publish'
