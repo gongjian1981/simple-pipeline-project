@@ -24,18 +24,12 @@ steps:
   displayName: 'Run Jest with coverage'
 
 - script: |
-    echo "Current path: $(pwd)"
-    echo "List root:"
-    ls -la
-    echo "List coverage:"
-    ls -la coverage || echo "No coverage folder found"
-    echo "List lcov-report:"
-    ls -la coverage/lcov-report || echo "No lcov-report folder found"
-  displayName: 'Debug coverage folders'
+    npm build
+  displayName: 'Build'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: 'coverage/lcov-report'
+    PathtoPublish: 'coverage'
     ArtifactName: 'coverage-report'
     publishLocation: 'Container'
   displayName: 'Publish coverage report'
